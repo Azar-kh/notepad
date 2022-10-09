@@ -1,0 +1,5 @@
+export const ADD_Note = 'ADD_Note'
+export const DELETE_Note = 'DELETE_Note'
+export const EDIT_Note = 'EDIT_Note'
+export const COMPLETED_Note = 'COMPLETED_Note'
+export const SET_TEXT = 'SET_TEXT'

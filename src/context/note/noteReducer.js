@@ -19,11 +19,26 @@ const NoteReducer = (state, action) => {
         ...state,
         notes: [...state.notes, action.payload],
       }
+    // case DELETE_Note:
+    //   return {
+    //     ...state,
+    //     notes: state.notes.filter((note) => note.id !== action.payload),
+    //   }
+
     case DELETE_Note:
       return {
         ...state,
-        notes: state.notes.filter((note) => note.id !== action.payload),
+        notes: state.notes.map((note) => {
+          if (note.id === action.payload) {
+            return {
+              ...note,
+              removed: !note.removed,
+            }
+          }
+          return note
+        }),
       }
+
     case EDIT_Note:
       return {
         ...state,

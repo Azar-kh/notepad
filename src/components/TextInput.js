@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import NoteContext from '../context/note/noteContext'
-import { Box, Input, useToast } from '@chakra-ui/react'
+import { Button, Center, Input, useToast, Icon } from '@chakra-ui/react'
+import { IoMdAdd } from 'react-icons/io'
 
 const TextInput = () => {
   const toast = useToast()
@@ -32,6 +33,7 @@ const TextInput = () => {
         id: randomId,
         title: text,
         completed: false,
+        removed: false,
       })
 
       setText('')
@@ -39,24 +41,36 @@ const TextInput = () => {
   }
 
   return (
-    <Box my="6" textAlign="center" w="100%" flex justifyContent="center">
+    <Center w="80%" h="100%">
       <form onSubmit={submitHandler}>
         <Input
-          w={[300, 500, 700]}
-          focusBorderColor="RGBA(255, 255, 255, 0.92)"
-          bg="RGBA(255, 255, 255, 0.92)"
-          color="RGBA(255, 255, 255, 0.92)"
+          size={['md', 'lg']}
+          w={['15em', '15em', '30em']}
           onChange={changeHandler}
+          focusBorderColor="#d0efff"
+          isInvalid
+          errorBorderColor="RGBA(0, 0, 0, 0.08)"
           type="text"
           value={text}
-          variant="filled"
           placeholder="Ex: complete the report"
           autoComplete="off"
-          autoFocus
-          maxLength="60"
-        ></Input>
+        />
       </form>
-    </Box>
+
+      <Button
+        ml="2"
+        size={['md', 'lg']}
+        w="10"
+        variant="outline"
+        onClick={submitHandler}
+        bg="#d0efff"
+        border="none"
+        transition="transform 200ms ease-in"
+        _hover={{ transform: 'scale(0.98)' }}
+      >
+        <Icon as={IoMdAdd} boxSize="10" />
+      </Button>
+    </Center>
   )
 }
 

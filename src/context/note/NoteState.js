@@ -38,12 +38,14 @@ const NoteState = (props) => {
   }
 
   let doneNotes = state.notes.filter((note) => note.completed === true)
+  let removedNotes = state.notes.filter((note) => note.removed === true)
   return (
     <NoteContext.Provider
       value={{
         notes: state.notes,
         text: state.text,
         doneNotes,
+        removedNotes,
         setText,
         addNote,
         editNote,

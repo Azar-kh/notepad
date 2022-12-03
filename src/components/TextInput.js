@@ -68,7 +68,7 @@ const TextInput = () => {
         transition="transform 200ms ease-in"
         _hover={{ transform: 'scale(0.98)' }}
       >
-        <Icon as={IoMdAdd} boxSize="10" />
+        <Icon as={IoMdAdd} boxSize={{ md: '10' }} />
       </Button>
     </Center>
   )
